@@ -9,8 +9,7 @@ class PostsController < ApplicationController
   else
   render "new"
   end
-  end
-
+ end
   def new
   @post=Post.new
   end
@@ -29,9 +28,11 @@ class PostsController < ApplicationController
  else
  render "edit"
  end
- end
+end
 
  def destroy
-
+ @post=Post.find(params[:id])
+ @post.destroy
+ redirect_to posts_path, :notice => "your post has been deleted";
  end
 end
